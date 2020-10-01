@@ -1,0 +1,3532 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Configuration - Project "Piper": Continuous Delivery for the SAP Ecosystem</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../#sap-cloud-sdk-pipeline-configuration" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="Project "Piper": Continuous Delivery for the SAP Ecosystem" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/piper_head_white.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Project "Piper": Continuous Delivery for the SAP Ecosystem
+              </span>
+              <span class="md-header-nav__topic">
+                Configuration
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/SAP/jenkins-library/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="Project "Piper": Continuous Delivery for the SAP Ecosystem" class="md-nav__button md-logo">
+      
+        <img src="../../../images/piper_head_white.png" width="48" height="48">
+      
+    </a>
+    Project "Piper": Continuous Delivery for the SAP Ecosystem
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/SAP/jenkins-library/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../guidedtour/" title="Getting Started With Project "Piper"" class="md-nav__link">
+      Getting Started With Project "Piper"
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/" title="Configuration" class="md-nav__link">
+      Configuration
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Infrastructure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Infrastructure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../infrastructure/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../infrastructure/customjenkins/" title="Custom Jenkins Setup" class="md-nav__link">
+      Custom Jenkins Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Pipelines
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Pipelines
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+    
+    <label class="md-nav__link" for="nav-5-1">
+      ABAP Environment pipeline
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-1">
+        ABAP Environment pipeline
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../abapEnvironment/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../abapEnvironment/configuration/" title="Configuration" class="md-nav__link">
+      Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      General purpose pipeline
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        General purpose pipeline
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/examples/" title="Examples" class="md-nav__link">
+      Examples
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2-3" type="checkbox" id="nav-5-2-3">
+    
+    <label class="md-nav__link" for="nav-5-2-3">
+      Stages
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-5-2-3">
+        Stages
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/init/" title="Init Stage" class="md-nav__link">
+      Init Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/prvoting/" title="Pull-Request Voting Stage" class="md-nav__link">
+      Pull-Request Voting Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/build/" title="Build Stage" class="md-nav__link">
+      Build Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/additionalunittests/" title="Additional Unit Test Stage" class="md-nav__link">
+      Additional Unit Test Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/integration/" title="Integration Stage" class="md-nav__link">
+      Integration Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/acceptance/" title="Acceptance Stage" class="md-nav__link">
+      Acceptance Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/security/" title="Security Stage" class="md-nav__link">
+      Security Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/performance/" title="Performance Stage" class="md-nav__link">
+      Performance Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/compliance/" title="Compliance" class="md-nav__link">
+      Compliance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/confirm/" title="Confirm Stage" class="md-nav__link">
+      Confirm Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/promote/" title="Promote Stage" class="md-nav__link">
+      Promote Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/release/" title="Release Stage" class="md-nav__link">
+      Release Stage
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
+    
+    <label class="md-nav__link" for="nav-5-3">
+      SAP Cloud SDK pipeline
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        SAP Cloud SDK pipeline
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Configuration
+      </label>
+    
+    <a href="./" title="Configuration" class="md-nav__link md-nav__link--active">
+      Configuration
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-configuration" title="General configuration" class="md-nav__link">
+    General configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" title="features" class="md-nav__link">
+    features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkinskubernetes" title="jenkinsKubernetes" class="md-nav__link">
+    jenkinsKubernetes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-configuration" title="Stage configuration" class="md-nav__link">
+    Stage configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#staticcodechecks" title="staticCodeChecks" class="md-nav__link">
+    staticCodeChecks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backendintegrationtests" title="backendIntegrationTests" class="md-nav__link">
+    backendIntegrationTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontendintegrationtests" title="frontendIntegrationTests" class="md-nav__link">
+    frontendIntegrationTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontendunittests" title="frontendUnitTests" class="md-nav__link">
+    frontendUnitTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endtoendtests" title="endToEndTests" class="md-nav__link">
+    endToEndTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npmaudit" title="npmAudit" class="md-nav__link">
+    npmAudit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performancetests" title="performanceTests" class="md-nav__link">
+    performanceTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s4sdkqualitychecks" title="s4SdkQualityChecks" class="md-nav__link">
+    s4SdkQualityChecks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkmarxscan" title="checkmarxScan" class="md-nav__link">
+    checkmarxScan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#productiondeployment" title="productionDeployment" class="md-nav__link">
+    productionDeployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cfcreateservices" title="cfCreateServices" class="md-nav__link">
+    cfCreateServices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cftargets-and-neotargets" title="cfTargets and neoTargets" class="md-nav__link">
+    cfTargets and neoTargets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactdeployment" title="artifactDeployment" class="md-nav__link">
+    artifactDeployment
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nexus" title="nexus" class="md-nav__link">
+    nexus
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-what-to-deploy-into-the-npm-repository" title="Choosing what to deploy into the npm repository" class="md-nav__link">
+    Choosing what to deploy into the npm repository
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whitesourcescan" title="whitesourceScan" class="md-nav__link">
+    whitesourceScan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortifyscan" title="fortifyScan" class="md-nav__link">
+    fortifyScan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lint" title="lint" class="md-nav__link">
+    lint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance" title="compliance" class="md-nav__link">
+    compliance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postpipelinehook" title="postPipelineHook" class="md-nav__link">
+    postPipelineHook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-configuration" title="Step configuration" class="md-nav__link">
+    Step configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checkgatling" title="checkGatling" class="md-nav__link">
+    checkGatling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkjmeter" title="checkJMeter" class="md-nav__link">
+    checkJMeter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executenpm" title="executeNpm" class="md-nav__link">
+    executeNpm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugreportarchive" title="debugReportArchive" class="md-nav__link">
+    debugReportArchive
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-action-configuration" title="Post action configuration" class="md-nav__link">
+    Post action configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sendnotification" title="sendNotification" class="md-nav__link">
+    sendNotification
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3-3" type="checkbox" id="nav-5-3-3">
+    
+    <label class="md-nav__link" for="nav-5-3-3">
+      Stages
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-5-3-3">
+        Stages
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/build/" title="Build and Test" class="md-nav__link">
+      Build and Test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/additionalunittests/" title="Additional Unit Tests" class="md-nav__link">
+      Additional Unit Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/integration/" title="Integration Tests" class="md-nav__link">
+      Integration Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/acceptance/" title="End to End Tests" class="md-nav__link">
+      End to End Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/security/" title="Security" class="md-nav__link">
+      Security
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/compliance/" title="Compliance" class="md-nav__link">
+      Compliance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/performance/" title="Performance" class="md-nav__link">
+      Performance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../stages/release/" title="Production Deployment" class="md-nav__link">
+      Production Deployment
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../build-tools/" title="Build Tools" class="md-nav__link">
+      Build Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cloud-qualities/" title="Cloud Qualities" class="md-nav__link">
+      Cloud Qualities
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Scenarios
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Scenarios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../scenarios/changeManagement/" title="Build and Deploy Hybrid Applications with Jenkins and SAP Solution Manager" class="md-nav__link">
+      Build and Deploy Hybrid Applications with Jenkins and SAP Solution Manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../scenarios/ui5-sap-cp/Readme/" title="Build and Deploy SAP UI5 or SAP Fiori Applications on SAP Cloud Platform with Jenkins" class="md-nav__link">
+      Build and Deploy SAP UI5 or SAP Fiori Applications on SAP Cloud Platform with Jenkins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../scenarios/CAP_Scenario/" title="Build and Deploy Applications with Jenkins and the SAP Cloud Application Programming Model" class="md-nav__link">
+      Build and Deploy Applications with Jenkins and the SAP Cloud Application Programming Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../scenarios/TMS_Extension/" title="Integrate SAP Cloud Platform Transport Management Into Your CI/CD Pipeline" class="md-nav__link">
+      Integrate SAP Cloud Platform Transport Management Into Your CI/CD Pipeline
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../scenarios/xsa-deploy/Readme/" title="Build and Deploy SAP Fiori Applications on SAP HANA XS Advanced" class="md-nav__link">
+      Build and Deploy SAP Fiori Applications on SAP HANA XS Advanced
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../scenarios/upload-to-transportrequest/Readme/" title="Build an SAP Fiori Application and Attach It to a Transport Request on an ABAP System with Jenkins" class="md-nav__link">
+      Build an SAP Fiori Application and Attach It to a Transport Request on an ABAP System with Jenkins
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../extensibility/" title="Extensibility" class="md-nav__link">
+      Extensibility
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Library steps
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Library steps
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapAddonAssemblyKitCheckCVs/" title="abapAddonAssemblyKitCheckCVs" class="md-nav__link">
+      abapAddonAssemblyKitCheckCVs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapAddonAssemblyKitCheckPV/" title="abapAddonAssemblyKitCheckCVs" class="md-nav__link">
+      abapAddonAssemblyKitCheckCVs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapAddonAssemblyKitCreateTargetVector/" title="abapAddonAssemblyKitCreateTargetVector" class="md-nav__link">
+      abapAddonAssemblyKitCreateTargetVector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapAddonAssemblyKitPublishTargetVector/" title="abapAddonAssemblyKitPublishTargetVector" class="md-nav__link">
+      abapAddonAssemblyKitPublishTargetVector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapAddonAssemblyKitRegisterPackages/" title="abapAddonAssemblyKitRegisterPackages" class="md-nav__link">
+      abapAddonAssemblyKitRegisterPackages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapAddonAssemblyKitReleasePackages/" title="abapAddonAssemblyKitReleasePackages" class="md-nav__link">
+      abapAddonAssemblyKitReleasePackages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapAddonAssemblyKitReserveNextPackages/" title="abapAddonAssemblyKitReserveNextPackages" class="md-nav__link">
+      abapAddonAssemblyKitReserveNextPackages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapEnvironmentAssemblePackages/" title="abapEnvironmentAssemblePackages" class="md-nav__link">
+      abapEnvironmentAssemblePackages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapEnvironmentCheckoutBranch/" title="abapEnvironmentCheckoutBranch" class="md-nav__link">
+      abapEnvironmentCheckoutBranch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapEnvironmentCloneGitRepo/" title="abapEnvironmentCloneGitRepo" class="md-nav__link">
+      abapEnvironmentCloneGitRepo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapEnvironmentPullGitRepo/" title="abapEnvironmentPullGitRepo" class="md-nav__link">
+      abapEnvironmentPullGitRepo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/abapEnvironmentRunATCCheck/" title="abapEnvironmentRunATCCheck" class="md-nav__link">
+      abapEnvironmentRunATCCheck
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/artifactPrepareVersion/" title="artifactPrepareVersion" class="md-nav__link">
+      artifactPrepareVersion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/batsExecuteTests/" title="batsExecuteTests" class="md-nav__link">
+      batsExecuteTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/buildExecute/" title="buildExecute" class="md-nav__link">
+      buildExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/checkChangeInDevelopment/" title="checkChangeInDevelopment" class="md-nav__link">
+      checkChangeInDevelopment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/checkmarxExecuteScan/" title="checkmarxExecuteScan" class="md-nav__link">
+      checkmarxExecuteScan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/checksPublishResults/" title="checksPublishResults" class="md-nav__link">
+      checksPublishResults
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/cfManifestSubstituteVariables/" title="cfManifestSubstituteVariables" class="md-nav__link">
+      cfManifestSubstituteVariables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/cloudFoundryCreateService/" title="cloudFoundryCreateService" class="md-nav__link">
+      cloudFoundryCreateService
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/cloudFoundryCreateServiceKey/" title="cloudFoundryCreateServiceKey" class="md-nav__link">
+      cloudFoundryCreateServiceKey
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/cloudFoundryDeleteService/" title="cloudFoundryDeleteService" class="md-nav__link">
+      cloudFoundryDeleteService
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/cloudFoundryDeploy/" title="cloudFoundryDeploy" class="md-nav__link">
+      cloudFoundryDeploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/commonPipelineEnvironment/" title="commonPipelineEnvironment" class="md-nav__link">
+      commonPipelineEnvironment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/containerExecuteStructureTests/" title="containerExecuteStructureTests" class="md-nav__link">
+      containerExecuteStructureTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/containerPushToRegistry/" title="containerPushToRegistry" class="md-nav__link">
+      containerPushToRegistry
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/debugReportArchive/" title="debugReportArchive" class="md-nav__link">
+      debugReportArchive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/detectExecuteScan/" title="detectExecuteScan" class="md-nav__link">
+      detectExecuteScan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/dockerExecute/" title="dockerExecute" class="md-nav__link">
+      dockerExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/dockerExecuteOnKubernetes/" title="dockerExecuteOnKubernetes" class="md-nav__link">
+      dockerExecuteOnKubernetes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/dubExecute/" title="dubExecute" class="md-nav__link">
+      dubExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/durationMeasure/" title="durationMeasure" class="md-nav__link">
+      durationMeasure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/fortifyExecuteScan/" title="fortifyExecuteScan" class="md-nav__link">
+      fortifyExecuteScan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/gaugeExecuteTests/" title="gaugeExecuteTests" class="md-nav__link">
+      gaugeExecuteTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/gctsCloneRepository/" title="gctsCloneRepository" class="md-nav__link">
+      gctsCloneRepository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/gctsCreateRepository/" title="gctsCreateRepository" class="md-nav__link">
+      gctsCreateRepository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/gctsDeploy/" title="gctsDeploy" class="md-nav__link">
+      gctsDeploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/gctsExecuteABAPUnitTests/" title="gctsExecuteABAPUnitTests" class="md-nav__link">
+      gctsExecuteABAPUnitTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/gctsRollback/" title="gctsRollback" class="md-nav__link">
+      gctsRollback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/githubCheckBranchProtection/" title="githubCheckBranchProtection" class="md-nav__link">
+      githubCheckBranchProtection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/githubCreatePullRequest/" title="githubCreatePullRequest" class="md-nav__link">
+      githubCreatePullRequest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/githubPublishRelease/" title="githubPublishRelease" class="md-nav__link">
+      githubPublishRelease
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/githubSetCommitStatus/" title="githubSetCommitStatus" class="md-nav__link">
+      githubSetCommitStatus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/hadolintExecute/" title="hadolintExecute" class="md-nav__link">
+      hadolintExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-nav__link">
+      handlePipelineStepErrors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/healthExecuteCheck/" title="healthExecuteCheck" class="md-nav__link">
+      healthExecuteCheck
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/influxWriteData/" title="influxWriteData" class="md-nav__link">
+      influxWriteData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/jenkinsMaterializeLog/" title="jenkinsMaterializeLog" class="md-nav__link">
+      jenkinsMaterializeLog
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/kanikoExecute/" title="kanikoExecute" class="md-nav__link">
+      kanikoExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/karmaExecuteTests/" title="karmaExecuteTests" class="md-nav__link">
+      karmaExecuteTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/kubernetesDeploy/" title="kubernetesDeploy" class="md-nav__link">
+      kubernetesDeploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/mailSendNotification/" title="mailSendNotification" class="md-nav__link">
+      mailSendNotification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/malwareExecuteScan/" title="malwareExecuteScan" class="md-nav__link">
+      malwareExecuteScan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/mavenBuild/" title="mavenBuild" class="md-nav__link">
+      mavenBuild
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/mavenExecute/" title="mavenExecute" class="md-nav__link">
+      mavenExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/mavenExecuteIntegration/" title="mavenExecuteIntegration" class="md-nav__link">
+      mavenExecuteIntegration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/mavenExecuteStaticCodeChecks/" title="mavenExecuteStaticCodeChecks" class="md-nav__link">
+      mavenExecuteStaticCodeChecks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/mtaBuild/" title="mtaBuild" class="md-nav__link">
+      mtaBuild
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/multicloudDeploy/" title="multicloudDeploy" class="md-nav__link">
+      multicloudDeploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/neoDeploy/" title="neoDeploy" class="md-nav__link">
+      neoDeploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/newmanExecute/" title="newmanExecute" class="md-nav__link">
+      newmanExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/nexusUpload/" title="nexusUpload" class="md-nav__link">
+      nexusUpload
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/npmExecuteEndToEndTests/" title="npmExecuteEndToEndTests" class="md-nav__link">
+      npmExecuteEndToEndTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/npmExecuteLint/" title="npmExecuteLint" class="md-nav__link">
+      npmExecuteLint
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/npmExecuteScripts/" title="npmExecuteScripts" class="md-nav__link">
+      npmExecuteScripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/pipelineExecute/" title="pipelineExecute" class="md-nav__link">
+      pipelineExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/pipelineRestartSteps/" title="pipelineRestartSteps" class="md-nav__link">
+      pipelineRestartSteps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/pipelineStashFiles/" title="pipelineStashFiles" class="md-nav__link">
+      pipelineStashFiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/pipelineStashFilesAfterBuild/" title="pipelineStashFilesAfterBuild" class="md-nav__link">
+      pipelineStashFilesAfterBuild
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/pipelineStashFilesBeforeBuild/" title="pipelineStashFilesBeforeBuild" class="md-nav__link">
+      pipelineStashFilesBeforeBuild
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/piperLoadGlobalExtensions/" title="piperLoadGlobalExtensions" class="md-nav__link">
+      piperLoadGlobalExtensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/piperPublishWarnings/" title="piperPublishWarnings" class="md-nav__link">
+      piperPublishWarnings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/prepareDefaultValues/" title="prepareDefaultValues" class="md-nav__link">
+      prepareDefaultValues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/protecodeExecuteScan/" title="protecodeExecuteScan" class="md-nav__link">
+      protecodeExecuteScan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/seleniumExecuteTests/" title="seleniumExecuteTests" class="md-nav__link">
+      seleniumExecuteTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/setupCommonPipelineEnvironment/" title="setupCommonPipelineEnvironment" class="md-nav__link">
+      setupCommonPipelineEnvironment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/slackSendNotification/" title="slackSendNotification" class="md-nav__link">
+      slackSendNotification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/snykExecute/" title="snykExecute" class="md-nav__link">
+      snykExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/sonarExecuteScan/" title="sonarExecuteScan" class="md-nav__link">
+      sonarExecuteScan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/spinnakerTriggerPipeline/" title="spinnakerTriggerPipeline" class="md-nav__link">
+      spinnakerTriggerPipeline
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/testsPublishResults/" title="testsPublishResults" class="md-nav__link">
+      testsPublishResults
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/tmsUpload/" title="tmsUpload" class="md-nav__link">
+      tmsUpload
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/transportRequestCreate/" title="transportRequestCreate" class="md-nav__link">
+      transportRequestCreate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/transportRequestRelease/" title="transportRequestRelease" class="md-nav__link">
+      transportRequestRelease
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/transportRequestUploadFile/" title="transportRequestUploadFile" class="md-nav__link">
+      transportRequestUploadFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/uiVeri5ExecuteTests/" title="uiVeri5ExecuteTests" class="md-nav__link">
+      uiVeri5ExecuteTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/whitesourceExecuteScan/" title="whitesourceExecuteScan" class="md-nav__link">
+      whitesourceExecuteScan
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/writeTemporaryCredentials/" title="writeTemporaryCredentials" class="md-nav__link">
+      writeTemporaryCredentials
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/xsDeploy/" title="xsDeploy" class="md-nav__link">
+      xsDeploy
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Library Steps (deprecated)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Library Steps (deprecated)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/artifactSetVersion/" title="artifactSetVersion" class="md-nav__link">
+      artifactSetVersion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../steps/npmExecute/" title="npmExecute" class="md-nav__link">
+      npmExecute
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../cli/" title="Command line tool" class="md-nav__link">
+      Command line tool
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-configuration" title="General configuration" class="md-nav__link">
+    General configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" title="features" class="md-nav__link">
+    features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkinskubernetes" title="jenkinsKubernetes" class="md-nav__link">
+    jenkinsKubernetes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-configuration" title="Stage configuration" class="md-nav__link">
+    Stage configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#staticcodechecks" title="staticCodeChecks" class="md-nav__link">
+    staticCodeChecks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backendintegrationtests" title="backendIntegrationTests" class="md-nav__link">
+    backendIntegrationTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontendintegrationtests" title="frontendIntegrationTests" class="md-nav__link">
+    frontendIntegrationTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontendunittests" title="frontendUnitTests" class="md-nav__link">
+    frontendUnitTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endtoendtests" title="endToEndTests" class="md-nav__link">
+    endToEndTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npmaudit" title="npmAudit" class="md-nav__link">
+    npmAudit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performancetests" title="performanceTests" class="md-nav__link">
+    performanceTests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s4sdkqualitychecks" title="s4SdkQualityChecks" class="md-nav__link">
+    s4SdkQualityChecks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkmarxscan" title="checkmarxScan" class="md-nav__link">
+    checkmarxScan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#productiondeployment" title="productionDeployment" class="md-nav__link">
+    productionDeployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cfcreateservices" title="cfCreateServices" class="md-nav__link">
+    cfCreateServices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cftargets-and-neotargets" title="cfTargets and neoTargets" class="md-nav__link">
+    cfTargets and neoTargets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactdeployment" title="artifactDeployment" class="md-nav__link">
+    artifactDeployment
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nexus" title="nexus" class="md-nav__link">
+    nexus
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-what-to-deploy-into-the-npm-repository" title="Choosing what to deploy into the npm repository" class="md-nav__link">
+    Choosing what to deploy into the npm repository
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whitesourcescan" title="whitesourceScan" class="md-nav__link">
+    whitesourceScan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortifyscan" title="fortifyScan" class="md-nav__link">
+    fortifyScan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lint" title="lint" class="md-nav__link">
+    lint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance" title="compliance" class="md-nav__link">
+    compliance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postpipelinehook" title="postPipelineHook" class="md-nav__link">
+    postPipelineHook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-configuration" title="Step configuration" class="md-nav__link">
+    Step configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checkgatling" title="checkGatling" class="md-nav__link">
+    checkGatling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkjmeter" title="checkJMeter" class="md-nav__link">
+    checkJMeter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executenpm" title="executeNpm" class="md-nav__link">
+    executeNpm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugreportarchive" title="debugReportArchive" class="md-nav__link">
+    debugReportArchive
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-action-configuration" title="Post action configuration" class="md-nav__link">
+    Post action configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sendnotification" title="sendNotification" class="md-nav__link">
+    sendNotification
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/pipelines/cloud-sdk/configuration.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="sap-cloud-sdk-pipeline-configuration">SAP Cloud SDK Pipeline Configuration<a class="headerlink" href="#sap-cloud-sdk-pipeline-configuration" title="Permanent link">&para;</a></h1>
+<h2 id="general-configuration">General configuration<a class="headerlink" href="#general-configuration" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>productiveBranch</code></td>
+<td></td>
+<td><code>master</code></td>
+<td>The name of your default branch. This branch will be used for deploying your application. Other branches will skip deployment.</td>
+</tr>
+<tr>
+<td><code>projectName</code></td>
+<td></td>
+<td><code>artifactId</code> from pom</td>
+<td>Name of the project</td>
+</tr>
+<tr>
+<td><code>collectTelemetryData</code></td>
+<td></td>
+<td><code>true</code></td>
+<td>No personal data is collected. For details, consult the <a href="https://github.com/SAP/cloud-s4-sdk-pipeline/blob/master/doc/operations/analytics.md">analytics documentation</a>.</td>
+</tr>
+<tr>
+<td><code>unsafeMode</code></td>
+<td></td>
+<td><code>false</code></td>
+<td>Enable unsafe mode to skip checking environment variables for insecure elements. Only use this for demo purposes, <strong>never for productive usage</strong>.</td>
+</tr>
+<tr>
+<td><code>customDefaultsCredentialsId</code></td>
+<td></td>
+<td></td>
+<td>Credentials (username / password) used to download <a href="#customDefaults">custom defaults</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="features">features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<p>This section allows to enable or disable certain optional features.
+This concept is known as <em>Feature Toggles</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parallelTestExecution</code></td>
+<td></td>
+<td><code>off</code></td>
+<td>Run E2E Tests in parallel. This feature is disabled by default because it is <a href="https://issues.jenkins-ci.org/browse/JENKINS-38442">not supported</a> in Blue Ocean. If this feature is enabled, we suggest not using the Blue Ocean interface and rely on the classic UI instead.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">general</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">productiveBranch</span><span class="p p-Indicator">:</span> <span class="s">&#39;master&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">projectName</span><span class="p p-Indicator">:</span> <span class="s">&#39;example_project&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">features</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">parallelTestExecution</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">on</span>
+</pre></div>
+
+<h3 id="jenkinskubernetes">jenkinsKubernetes<a class="headerlink" href="#jenkinskubernetes" title="Permanent link">&para;</a></h3>
+<p>If the Jenkins is running on a kubernetes cluster as a pod, we can use the dynamic scaling feature in the pipeline. In order to enable this, an environment variable <code>ON_K8S</code> has to be set to <code>true</code> on the jenkins.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jnlpAgent</code></td>
+<td></td>
+<td><code>jenkins/jnlp-slave:latest</code></td>
+<td>Docker image for <code>jnlp</code> agent to be used</td>
+</tr>
+</tbody>
+</table>
+<p>In the Jenkins configuration section under <code>Manage Jenkins</code> menu, set the value for your environment variable under <code>Global properties</code> section.</p>
+<p><img alt="Environment variable configuration" src="../../../images/k8s-environment-config.jpg" /></p>
+<p>The Jenkins spins up <code>jnlp</code> agent nodes on demand. By default, the <code>jenkins/jnlp-slave</code> docker image is used. We can also use the custom <code>jnlp</code> agent by configuring the same in the <code>.pipeline/config.yml</code> file as shown below.</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">general</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">jenkinsKubernetes</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">jnlpAgent</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jenkins/jnlp-slave:latest</span>
+</pre></div>
+
+<h2 id="stage-configuration">Stage configuration<a class="headerlink" href="#stage-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="staticcodechecks">staticCodeChecks<a class="headerlink" href="#staticcodechecks" title="Permanent link">&para;</a></h3>
+<p>The <code>staticCodeChecks</code> stage has been integrated into the <code>build</code> stage.
+To configure static code checks, please configure the step <code>mavenExecuteStaticCodeChecks</code> as described <a href="../../../steps/mavenExecuteStaticCodeChecks/">here</a>.</p>
+<h3 id="backendintegrationtests">backendIntegrationTests<a class="headerlink" href="#backendintegrationtests" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>retry</code></td>
+<td></td>
+<td><code>1</code></td>
+<td>The number of times that integration tests will retry before aborting the build. <strong>Note:</strong> This will consume more time for the jenkins build.</td>
+</tr>
+<tr>
+<td><code>forkCount</code></td>
+<td></td>
+<td><code>1C</code></td>
+<td>The number of JVM processes that are spawned to run the tests in parallel in case of using a maven based project structure. For more details visit the <a href="https://maven.apache.org/surefire/maven-surefire-plugin/test-mojo.html#forkCount">surefire documentation</a>.</td>
+</tr>
+<tr>
+<td><code>credentials</code></td>
+<td></td>
+<td></td>
+<td>The list of system credentials to be injected during integration tests. The following example will provide the username and password for the systems with the aliases ERP and SFSF. For this, it will use the Jenkins credentials entries erp-credentials and successfactors-credentials. You have to ensure that corresponding credential entries exist in your Jenkins configuration</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">backendIntegrationTests</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">retry</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="l l-Scalar l-Scalar-Plain">credentials</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">alias</span><span class="p p-Indicator">:</span> <span class="s">&#39;ERP&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialId</span><span class="p p-Indicator">:</span> <span class="s">&#39;erp-credentials&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">alias</span><span class="p p-Indicator">:</span> <span class="s">&#39;SF&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialId</span><span class="p p-Indicator">:</span> <span class="s">&#39;successfactors-credentials&#39;</span>
+</pre></div>
+
+<p>The integration tests stage also offers the option to run a sidecar container, e.g. for running a database or another downstream system.
+To use this optional feature the following configuration values have to be provided:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sidecarImage</code></td>
+<td></td>
+<td></td>
+<td>Name of the Docker image that should be used.</td>
+</tr>
+<tr>
+<td><code>sidecarName</code></td>
+<td></td>
+<td></td>
+<td>On Docker: Name of the container in local network. On Kubernetes: Name of the container.</td>
+</tr>
+<tr>
+<td><code>sidecarReadyCommand</code></td>
+<td></td>
+<td></td>
+<td>Command executed inside the container which returns exit code 0 when the container is ready to be used.</td>
+</tr>
+<tr>
+<td><code>sidecarEnvVars</code></td>
+<td></td>
+<td></td>
+<td>Environment variables to set in the container.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: To access the container from your tests use the <code>sidecarName</code> as hostname on Docker or <code>localhost:portOfProcess</code> on Kubernetes.</em></p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">backendIntegrationTests</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">retry</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="l l-Scalar l-Scalar-Plain">credentials</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">alias</span><span class="p p-Indicator">:</span> <span class="s">&#39;ERP&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialId</span><span class="p p-Indicator">:</span> <span class="s">&#39;erp-credentials&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">alias</span><span class="p p-Indicator">:</span> <span class="s">&#39;SF&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialId</span><span class="p p-Indicator">:</span> <span class="s">&#39;successfactors-credentials&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">sidecarName</span><span class="p p-Indicator">:</span> <span class="s">&#39;postgres&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">sidecarImage</span><span class="p p-Indicator">:</span> <span class="s">&#39;postgres&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">sidecarReadyCommand</span><span class="p p-Indicator">:</span> <span class="s">&#39;pg_isready&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">sidecarEnvVars</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">PORT</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">8234</span>
+</pre></div>
+
+<h3 id="frontendintegrationtests">frontendIntegrationTests<a class="headerlink" href="#frontendintegrationtests" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dockerImage</code></td>
+<td></td>
+<td></td>
+<td>The docker image to be used for running frontend integration tests. <strong>Note:</strong> This will only change the docker image used for unit testing in the frontend. For switching all npm based steps to a different npm or chromium version, you should configure the dockerImage via the executeNpm step.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="frontendunittests">frontendUnitTests<a class="headerlink" href="#frontendunittests" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dockerImage</code></td>
+<td></td>
+<td></td>
+<td>The docker image to be used for running frontend unit tests. <strong>Note:</strong> This will only change the docker image used for unit testing in the frontend. For switching all npm based steps to a different npm or chromium version, you should configure the dockerImage via the executeNpm step.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="endtoendtests">endToEndTests<a class="headerlink" href="#endtoendtests" title="Permanent link">&para;</a></h3>
+<p>For the stage <code>endToEndTests</code> the same configuration options are available as for the stage <code>productionDeployment</code>.</p>
+<p>In addition to these options also the following ones are available for end-to-end tests:</p>
+<p>It is possible to activate zero downtime deployment in end-to-end tests with the option <code>enableZeroDowntimeDeployment</code>.
+This will lead to a blue-green-deployment on SCP Cloud Foundry respectively to a rolling update on SCP Neo.
+By default this feature is turned off.</p>
+<p>Running end-to-end tests can be restricted to the <code>productiveBranch</code> with the option <code>onlyRunInProductiveBranch</code>.
+This might be useful when the end-to-end tests slow down development, and build failure on the <code>productiveBranch</code> is acceptable.
+By default this feature is turned off.</p>
+<p>Additional parameters can be passed for each end-to-end test deployment by specifying <em>optional</em> <code>parameters</code> for an application URL.
+These parameters are appended to the npm command during execution.
+This could be used for example to split the entire end-to-end test scenario into multiple sub-scenarios and running these sub-scenarios on different deployments.
+For example, when using nightwatch-api, these scenarios can be defined via annotations in the test descriptions and can be called with the <code>--tag</code> parameter as shown in the example below. Another option is to execute the end to end tests with various web browsers, e.g. chrome or firefox.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">endToEndTests</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">enableZeroDowntimeDeployment</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">onlyRunInProductiveBranch</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">appUrls</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;application url&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialId</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">e2e-test-user-cf</span>
+      <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span> <span class="s">&#39;--tag</span><span class="nv"> </span><span class="s">scenario1</span><span class="nv"> </span><span class="s">--NIGHTWATCH_ENV=chrome&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;application url 2&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialId</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">e2e-test-user-cf</span>
+      <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span> <span class="s">&#39;--tag</span><span class="nv"> </span><span class="s">scenario2</span><span class="nv"> </span><span class="s">--tag</span><span class="nv"> </span><span class="s">scenario3</span><span class="nv"> </span><span class="s">--NIGHTWATCH_ENV=firefox&#39;</span>
+</pre></div>
+
+<h3 id="npmaudit">npmAudit<a class="headerlink" href="#npmaudit" title="Permanent link">&para;</a></h3>
+<p>This stage has been removed in v43 of the Cloud SDK pipeline.</p>
+<h3 id="performancetests">performanceTests<a class="headerlink" href="#performancetests" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cfTargets</code></td>
+<td></td>
+<td></td>
+<td>The list of Cloud Foundry deployment targets required for the performance test stage.</td>
+</tr>
+<tr>
+<td><code>neoTargets</code></td>
+<td></td>
+<td></td>
+<td>The list of Neo deployment targets required for the performance test stage.</td>
+</tr>
+</tbody>
+</table>
+<p>For details on the properties <code>cfTargets</code> and <code>neoTargets</code> see the stage <code>productionDeployment</code>.</p>
+<h3 id="s4sdkqualitychecks">s4SdkQualityChecks<a class="headerlink" href="#s4sdkqualitychecks" title="Permanent link">&para;</a></h3>
+<p>This stage has been removed in v43 of the Cloud SDK pipeline.</p>
+<h3 id="checkmarxscan">checkmarxScan<a class="headerlink" href="#checkmarxscan" title="Permanent link">&para;</a></h3>
+<p>The <code>checkmarxScan</code> stage has been merged into the project "Piper" stage <code>security</code>.
+To configure Checkmarx please configure the step <code>checkmarxExecuteScan</code> as described <a href="../../../steps/checkmarxExecuteScan/">in the step documentation</a>.</p>
+<h3 id="productiondeployment">productionDeployment<a class="headerlink" href="#productiondeployment" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cfCreateServices</code></td>
+<td></td>
+<td></td>
+<td>The list of services which should be created before deploying the application as defined below.</td>
+</tr>
+<tr>
+<td><code>cfTargets</code></td>
+<td></td>
+<td></td>
+<td>The list of productive Cloud Foundry deployment targets to be deployed when a build of your productive branch succeeds.</td>
+</tr>
+<tr>
+<td><code>neoTargets</code></td>
+<td></td>
+<td></td>
+<td>The list of productive Neo deployment targets to be deployed when a build of your productive branch succeeds.</td>
+</tr>
+<tr>
+<td><code>appUrls</code></td>
+<td></td>
+<td></td>
+<td>The URLs under which the app is available after deployment. Each appUrl can be a string with the URL or a map containing a property url and a property credentialId. An example is shown in the configuration for the stage endToEndTests.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cfcreateservices">cfCreateServices<a class="headerlink" href="#cfcreateservices" title="Permanent link">&para;</a></h3>
+<p>The option <code>cfCreateServices</code> is especially useful if you don't use MTA and need a way to declaratively define which services should be created in Cloud Foundry.
+The following properties can be defined for each element in the list.
+For a detailed documentation of the indivitual properties please consult the <a href="../../../steps/cloudFoundryCreateService/">step documentation</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>org</code></td>
+<td>X**</td>
+<td></td>
+<td>The organization where you want to deploy your app.</td>
+</tr>
+<tr>
+<td><code>space</code></td>
+<td>X**</td>
+<td></td>
+<td>The space where you want to deploy your app.</td>
+</tr>
+<tr>
+<td><code>serviceManifest</code></td>
+<td>X**</td>
+<td></td>
+<td>Manifest file that needs to be used defining the services.</td>
+</tr>
+<tr>
+<td><code>manifestVariablesFiles</code></td>
+<td>X**</td>
+<td></td>
+<td>Variables that should be replaced in the service manifest file.</td>
+</tr>
+<tr>
+<td><code>credentialsId</code></td>
+<td>X**</td>
+<td></td>
+<td>ID to the credentials that will be used to connect to the Cloud Foundry account.</td>
+</tr>
+<tr>
+<td><code>apiEndpoint</code></td>
+<td>X**</td>
+<td></td>
+<td>URL to the Cloud Foundry endpoint.</td>
+</tr>
+</tbody>
+</table>
+<p>** The parameters can either be specified here or for the step <code>cloudFoundryDeploy</code> or globally in the general section under the key <code>cloudFoundry</code>.</p>
+<h3 id="cftargets-and-neotargets">cfTargets and neoTargets<a class="headerlink" href="#cftargets-and-neotargets" title="Permanent link">&para;</a></h3>
+<p>You can either specify the property <code>cfTargets</code> or <code>neoTargets</code>.</p>
+<p>For <code>cfTargets</code> the following properties can be defined:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>org</code></td>
+<td>X**</td>
+<td></td>
+<td>The organization where you want to deploy your app.</td>
+</tr>
+<tr>
+<td><code>space</code></td>
+<td>X**</td>
+<td></td>
+<td>The space where you want to deploy your app.</td>
+</tr>
+<tr>
+<td><code>appName</code></td>
+<td>X** (not for MTA)</td>
+<td></td>
+<td>Name of the application.</td>
+</tr>
+<tr>
+<td><code>manifest</code></td>
+<td>X** (not for MTA)</td>
+<td></td>
+<td>Manifest file that needs to be used.</td>
+</tr>
+<tr>
+<td><code>credentialsId</code></td>
+<td>X**</td>
+<td></td>
+<td>ID to the credentials that will be used to connect to the Cloud Foundry account.</td>
+</tr>
+<tr>
+<td><code>apiEndpoint</code></td>
+<td>X**</td>
+<td></td>
+<td>URL to the Cloud Foundry endpoint.</td>
+</tr>
+<tr>
+<td><code>mtaExtensionDescriptor</code></td>
+<td></td>
+<td></td>
+<td>(<strong>Only for MTA-projects</strong>) Path to the mta extension description file. For more information on how to use those extension files please visit the <a href="https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.02/en-US/51ac525c78244282919029d8f5e2e35d.html">SAP HANA Developer Guide</a>.</td>
+</tr>
+<tr>
+<td><code>mtaExtensionCredentials</code></td>
+<td></td>
+<td></td>
+<td>(<strong>Only for MTA-projects</strong>) Map of credentials that need to be replaced in the <code>mtaExtensionDescriptor</code>. This map needs to be created as <code>value-to-be-replaced</code>:<code>id-of-a-credential-in-jenkins</code></td>
+</tr>
+</tbody>
+</table>
+<p>** The parameters can either be specified here or for the step <code>cloudFoundryDeploy</code> or globally in the general section under the key <code>cloudFoundry</code>.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">general</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">cloudFoundry</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">org</span><span class="p p-Indicator">:</span> <span class="s">&#39;myorg&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">space</span><span class="p p-Indicator">:</span> <span class="s">&#39;Prod&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">apiEndpoint</span><span class="p p-Indicator">:</span> <span class="s">&#39;https://api.cf.sap.hana.ondemand.com&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">credentialsId</span><span class="p p-Indicator">:</span> <span class="s">&#39;CF-DEPLOY-DEFAULT&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">manifestVariablesFiles</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;manifest-variables.yml&#39;</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">stages</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">productionDeployment</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">appUrls</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;application url&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">credentialId</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">e2e-test-user-cf</span>
+    <span class="l l-Scalar l-Scalar-Plain">cfCreateServices</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">serviceManifest</span><span class="p p-Indicator">:</span> <span class="s">&#39;services-manifest.yml&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">serviceManifest</span><span class="p p-Indicator">:</span> <span class="s">&#39;services-manifest.yml&#39;</span>
+        <span class="l l-Scalar l-Scalar-Plain">space</span><span class="p p-Indicator">:</span> <span class="s">&#39;Prod2&#39;</span>
+        <span class="l l-Scalar l-Scalar-Plain">org</span><span class="p p-Indicator">:</span> <span class="s">&#39;myorg2&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">cfTargets</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">appName</span><span class="p p-Indicator">:</span> <span class="s">&#39;exampleapp&#39;</span>
+        <span class="l l-Scalar l-Scalar-Plain">manifest</span><span class="p p-Indicator">:</span> <span class="s">&#39;manifest.yml&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">space</span><span class="p p-Indicator">:</span> <span class="s">&#39;Prod2&#39;</span>
+        <span class="l l-Scalar l-Scalar-Plain">org</span><span class="p p-Indicator">:</span> <span class="s">&#39;myorg2&#39;</span>
+        <span class="l l-Scalar l-Scalar-Plain">appName</span><span class="p p-Indicator">:</span> <span class="s">&#39;exampleapp&#39;</span>
+        <span class="l l-Scalar l-Scalar-Plain">manifest</span><span class="p p-Indicator">:</span> <span class="s">&#39;manifest.yml&#39;</span>
+        <span class="l l-Scalar l-Scalar-Plain">credentialsId</span><span class="p p-Indicator">:</span> <span class="s">&#39;CF-DEPLOY-PROD1&#39;</span>
+</pre></div>
+
+<p>The MTA projects can make use of the extension files and one can use a Jenkins credential store to inject the credentials during runtime instead of storing them as a plain text in the extension file.
+In order to use this feature, use a <a href="http://docs.groovy-lang.org/latest/html/api/groovy/text/GStringTemplateEngine.html">JSP style or GString style</a> place holder in the extension file and provide the respective credential id in the <code>.pipeline/config.yml</code> as shown below.</p>
+<p>Please note currently only the Jenkins <a href="https://jenkins.io/doc/book/using/using-credentials/">Sercret text</a> is the supported format for runtime credential substitution.</p>
+<div class="codehilite"><pre><span></span><span class="c1">#.pipeline/config.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">productionDeployment</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">appUrls</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;application url&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialId</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">e2e-test-user-cf</span>
+  <span class="l l-Scalar l-Scalar-Plain">cfTargets</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">space</span><span class="p p-Indicator">:</span> <span class="s">&#39;Prod&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">org</span><span class="p p-Indicator">:</span> <span class="s">&#39;myorg&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">appName</span><span class="p p-Indicator">:</span> <span class="s">&#39;exampleapp&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">manifest</span><span class="p p-Indicator">:</span> <span class="s">&#39;manifest.yml&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialsId</span><span class="p p-Indicator">:</span> <span class="s">&#39;CF-DEPLOY&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">apiEndpoint</span><span class="p p-Indicator">:</span> <span class="s">&#39;&lt;Cloud</span><span class="nv"> </span><span class="s">Foundry</span><span class="nv"> </span><span class="s">API</span><span class="nv"> </span><span class="s">endpoint&gt;&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mtaExtensionDescriptor</span><span class="p p-Indicator">:</span> <span class="s">&#39;path</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">mta</span><span class="nv"> </span><span class="s">extension</span><span class="nv"> </span><span class="s">description</span><span class="nv"> </span><span class="s">file&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mtaExtensionCredentials</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">brokerCredential</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sercretText-id-in-jenkins</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="c1">#extension_file.mtaext</span>
+<span class="l l-Scalar l-Scalar-Plain">_schema-version</span><span class="p p-Indicator">:</span> <span class="s">&quot;3.1&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0.1</span>
+<span class="l l-Scalar l-Scalar-Plain">extends</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">myApplication</span>
+<span class="l l-Scalar l-Scalar-Plain">ID</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my-application</span>
+<span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">broker-credentials</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;%= brokerCredential %&gt;</span>
+</pre></div>
+
+<p>For <code>neoTargets</code> the following properties can be defined:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>host</code></td>
+<td>X</td>
+<td></td>
+<td>Host of the region you want to deploy to, see <a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html#loio350356d1dc314d3199dca15bd2ab9b0e">Regions</a></td>
+</tr>
+<tr>
+<td><code>account</code></td>
+<td>X</td>
+<td></td>
+<td>Identifier of the subaccount</td>
+</tr>
+<tr>
+<td><code>application</code></td>
+<td>X</td>
+<td></td>
+<td>Name of the application in your account</td>
+</tr>
+<tr>
+<td><code>credentialsId</code></td>
+<td></td>
+<td><code>CI_CREDENTIALS_ID</code></td>
+<td>ID of the credentials stored in Jenkins and used to deploy to SAP Cloud Platform</td>
+</tr>
+<tr>
+<td><code>environment</code></td>
+<td></td>
+<td></td>
+<td>Map of environment variables in the form of KEY: VALUE</td>
+</tr>
+<tr>
+<td><code>vmArguments</code></td>
+<td></td>
+<td></td>
+<td>String of VM arguments passed to the JVM</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td></td>
+<td><code>lite</code></td>
+<td>Size of the JVM, e.g. <code>lite</code>, <code>pro'</code>, <code>prem</code>, <code>prem-plus</code></td>
+</tr>
+<tr>
+<td><code>runtime</code></td>
+<td>X</td>
+<td></td>
+<td>Name of the runtime: neo-java-web, neо-javaee6-wp, neо-javaee7-wp. See the <a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/937db4fa204c456f9b7820f83bc87118.html">runtime</a> for more information.</td>
+</tr>
+<tr>
+<td><code>runtimeVersion</code></td>
+<td>X</td>
+<td></td>
+<td>Version of the runtime. See <a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/937db4fa204c456f9b7820f83bc87118.html">runtime-version</a> for more information.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">productionDeployment</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">neoTargets</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&#39;eu1.hana.ondemand.com&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">account</span><span class="p p-Indicator">:</span> <span class="s">&#39;myAccount&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">application</span><span class="p p-Indicator">:</span> <span class="s">&#39;exampleapp&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialsId</span><span class="p p-Indicator">:</span> <span class="s">&#39;NEO-DEPLOY-PROD&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">STAGE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Production</span>
+      <span class="l l-Scalar l-Scalar-Plain">vmArguments</span><span class="p p-Indicator">:</span> <span class="s">&#39;-Dargument1=value1</span><span class="nv"> </span><span class="s">-Dargument2=value2&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">runtime</span><span class="p p-Indicator">:</span> <span class="s">&#39;neo-javaee6-wp&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">runtimeVersion</span><span class="p p-Indicator">:</span> <span class="s">&#39;2&#39;</span>
+</pre></div>
+
+<h3 id="artifactdeployment">artifactDeployment<a class="headerlink" href="#artifactdeployment" title="Permanent link">&para;</a></h3>
+<h4 id="nexus">nexus<a class="headerlink" href="#nexus" title="Permanent link">&para;</a></h4>
+<p>The deployment of artifacts to nexus can be configured with a map containing the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>version</code></td>
+<td></td>
+<td><code>nexus3</code></td>
+<td>Version of nexus. Can be <code>nexus2</code> or <code>nexus3</code>.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>X</td>
+<td></td>
+<td>URL of the nexus. The scheme part of the URL will not be considered, because only <code>http</code> is supported.</td>
+</tr>
+<tr>
+<td><code>mavenRepository</code></td>
+<td></td>
+<td></td>
+<td>Name of the nexus repository for Maven and MTA artifacts. Ignored if the project does not contain <code>pom.xml</code> or <code>mta.yml</code> in the project root.</td>
+</tr>
+<tr>
+<td><code>npmRepository</code></td>
+<td></td>
+<td></td>
+<td>Name of the nexus repository for NPM artifacts. Ignored if the project does not contain a <code>package.json</code> in the project root directory.</td>
+</tr>
+<tr>
+<td><code>groupId</code></td>
+<td></td>
+<td></td>
+<td>Common group ID for MTA build artifacts, ignored for Maven projects.</td>
+</tr>
+<tr>
+<td><code>credentialsId</code></td>
+<td></td>
+<td></td>
+<td>ID to the credentials which is used to connect to Nexus. Anonymous deployments do not require a <code>credentialsId</code>.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="choosing-what-to-deploy-into-the-npm-repository">Choosing what to deploy into the npm repository<a class="headerlink" href="#choosing-what-to-deploy-into-the-npm-repository" title="Permanent link">&para;</a></h5>
+<p>The Pipeline performs an <a href="https://docs.npmjs.com/cli/publish">npm publish</a> command to deploy npm modules.
+This deployment might include files that you don't want to deploy.
+See <a href="https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package">here</a> for npm documentation.</p>
+<p><strong>WARNING:</strong> The <code>.gitignore</code> file is not available in the pipeline during the artifact deployment.
+To exclude files from that, please create a <code>.npmignore</code> file, copy the contents of your <code>.gitignore</code> file and add specific ignores for example for <code>*.java</code> files.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">artifactDeployment</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">nexus</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nexus2</span>
+    <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nexus.mycorp:8080/nexus</span>
+    <span class="l l-Scalar l-Scalar-Plain">mavenRepository</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">snapshots</span>
+    <span class="l l-Scalar l-Scalar-Plain">npmRepository</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">npm-repo</span>
+    <span class="l l-Scalar l-Scalar-Plain">credentialsId</span><span class="p p-Indicator">:</span> <span class="s">&#39;NEXUS-DEPLOY&#39;</span>
+</pre></div>
+
+<h3 id="whitesourcescan">whitesourceScan<a class="headerlink" href="#whitesourcescan" title="Permanent link">&para;</a></h3>
+<p>The <code>whitesourceScan</code> stage has been merged into the project "Piper" stage <code>security</code>.
+To configure WhiteSource please configure the step <code>whitesourceExecuteScan</code> as described <a href="../../../steps/whitesourceExecuteScan/">in the step documentation</a>.</p>
+<h3 id="fortifyscan">fortifyScan<a class="headerlink" href="#fortifyscan" title="Permanent link">&para;</a></h3>
+<p>The <code>fortifyScan</code> stage has been merged into the project "Piper" stage <code>security</code>.
+To configure Fortify please configure the step <code>fortifyExecuteScan</code> as described <a href="../../../steps/fortifyExecuteScan/">in the step documentation</a>.</p>
+<h3 id="lint">lint<a class="headerlink" href="#lint" title="Permanent link">&para;</a></h3>
+<p>The <code>lint</code> stage has been integrated into the <code>build</code> stage.
+The options for the use of linting tools remain the same and are described in the <a href="../build-tools/#lint">build tools section</a>.</p>
+<p>Note, the available configuration options can be found in the related <a href="../../../steps/npmExecuteLint/#parameters">step documentation</a>.</p>
+<h3 id="compliance">compliance<a class="headerlink" href="#compliance" title="Permanent link">&para;</a></h3>
+<p>The stage <code>compliance</code> executes <a href="https://www.sonarqube.org/">SonarQube</a> scans, if the step <a href="../../../steps/sonarExecuteScan/"><code>sonarExecuteScan</code></a> is configured.</p>
+<p>This is an optional feature for teams who prefer to use SonarQube.
+Note that it does some scans that are already done by the pipeline by default.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>runInAllBranches</code></td>
+<td></td>
+<td>false</td>
+<td>Define whether the scan should also happen in non productive branches, i.e. if your SonarQube instance supports that.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> The stage is skipped by default if you're not on a productive branch (<code>master</code> by default).
+You can change this by setting <code>runInAllBranches</code> to <code>true</code>, which requires the commercial version of SonarQube.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">compliance</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">runInAllBranches</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<h3 id="postpipelinehook">postPipelineHook<a class="headerlink" href="#postpipelinehook" title="Permanent link">&para;</a></h3>
+<p>This stage does nothing.
+Its purpose is to be overridden if required.</p>
+<p>See the documentation for <a href="../../../extensibility/">pipeline extensibility</a> for details on how to extend a stage.
+The name of an extension file must be <code>postPipelineHook.groovy</code>.
+Also, the stage (and thus an extension) is only executed if a stage configuration exists, like in this example:</p>
+<div class="codehilite"><pre><span></span>  <span class="l l-Scalar l-Scalar-Plain">postPipelineHook</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
+<p>This section describes the steps that are available only in SAP Cloud SDK Pipeline.
+For common project "Piper" steps, please see the <em>Library steps</em> section of the documentation.</p>
+<h3 id="checkgatling">checkGatling<a class="headerlink" href="#checkgatling" title="Permanent link">&para;</a></h3>
+<p><a href="https://gatling.io/">Gatling</a> is used as one of the performance tests tool.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td></td>
+<td><code>false</code></td>
+<td>You can enable Gatling tests by turning the flag to <code>true</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">checkGatling</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<h3 id="checkjmeter">checkJMeter<a class="headerlink" href="#checkjmeter" title="Permanent link">&para;</a></h3>
+<p><a href="http://jmeter.apache.org/">Apache JMeter</a> is executed as part of performance tests of the application. The user is free to choose between JMeter and Gatling or both.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Mandatory</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+<td></td>
+<td></td>
+<td>Options such as proxy.</td>
+</tr>
+<tr>
+<td><code>testPlan</code></td>
+<td></td>
+<td><code>./performance-tests/*</code></td>
+<td>The directory where the test plans reside. Should reside in a subdirectory under <code>performance-tests</code> directory if both JMeter and Gatling are enabled.</td>
+</tr>
+<tr>
+<td><code>dockerImage</code></td>
+<td></td>
+<td><code>famiko/jmeter-base</code></td>
+<td>JMeter docker image.</td>
+</tr>
+<tr>
+<td><code>failThreshold</code></td>
+<td></td>
+<td><code>100</code></td>
+<td>Marks build as <code>FAILURE</code> if the value exceeds the threshold.</td>
+</tr>
+<tr>
+<td><code>unstableThreshold</code></td>
+<td></td>
+<td><code>90</code></td>
+<td>Marks build as <code>UNSTABLE</code> if the value exceeds the threshold.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">checkJMeter</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span> <span class="s">&#39;-H</span><span class="nv"> </span><span class="s">my.proxy.server</span><span class="nv"> </span><span class="s">-P</span><span class="nv"> </span><span class="s">8000&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">testPlan</span><span class="p p-Indicator">:</span> <span class="s">&#39;./performance-tests/JMeter/*&#39;</span> <span class="c1"># mandatory parameter if both JMeter and gatling are enabled</span>
+  <span class="l l-Scalar l-Scalar-Plain">dockerImage</span><span class="p p-Indicator">:</span> <span class="s">&#39;famiko/jmeter-base&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">failThreshold</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+  <span class="l l-Scalar l-Scalar-Plain">unstableThreshold</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">70</span>
+</pre></div>
+
+<h3 id="executenpm">executeNpm<a class="headerlink" href="#executenpm" title="Permanent link">&para;</a></h3>
+<p>This step has been removed in v43 of the Cloud SDK pipeline.
+Please use the step <a href="../../../steps/npmExecuteScripts/">npmExecuteScripts</a> instead.</p>
+<h3 id="debugreportarchive">debugReportArchive<a class="headerlink" href="#debugreportarchive" title="Permanent link">&para;</a></h3>
+<p>The documentation for the <code>debugReportArchive</code> step has been moved <a href="../../../steps/debugReportArchive/">here</a>.</p>
+<h2 id="post-action-configuration">Post action configuration<a class="headerlink" href="#post-action-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="sendnotification">sendNotification<a class="headerlink" href="#sendnotification" title="Permanent link">&para;</a></h3>
+<p>The <code>sendNotification</code> post-build action has been removed in version v43 of the Cloud SDK pipeline.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../introduction/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../../stages/build/" title="Build and Test" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Build and Test
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.3",url:{base:"../../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
