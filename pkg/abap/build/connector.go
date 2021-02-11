@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
+	"net/url"
 	"strconv"
 	"time"
 
@@ -20,6 +21,7 @@ type Connector struct {
 	DownloadClient piperhttp.Downloader
 	Header         map[string][]string
 	Baseurl        string
+	URL            *url.URL
 }
 
 // ConnectorConfiguration : Handover Structure for Connector Creation
@@ -34,6 +36,83 @@ type ConnectorConfiguration struct {
 	Password            string
 	AddonDescriptor     string
 	MaxRuntimeInMinutes int
+}
+
+// NewConnector : Factory
+func NewConnector(httpClient piperhttp.Sender, username string, password string, rawurl string) (*Connector, error) {
+	connector := new(Connector)
+	connector.Client = httpClient
+	connector.Header = make(map[string][]string)
+	connector.Header["Accept"] = []string{"application/json"}
+	connector.Header["Content-Type"] = []string{"application/json"}
+
+	cookieJar, err := cookiejar.New(nil)
+	connector.Client.SetOptions(piperhttp.ClientOptions{
+		Username:  username,
+		Password:  password,
+		CookieJar: cookieJar,
+	})
+
+	connector.URL, err = url.Parse(rawurl)
+
+	return connector, err
+}
+
+// InitAAKaaS : initialize Connector for communication with AAKaaS backend
+func (conn *Connector) InitAAKaaS(aAKaaSEndpoint string, username string, password string, inputclient piperhttp.Sender) {
+	conn.Client = inputclient
+	conn.Header = make(map[string][]string)
+	conn.Header["Accept"] = []string{"application/json"}
+	conn.Header["Content-Type"] = []string{"application/json"}
+
+	cookieJar, _ := cookiejar.New(nil)
+	conn.Client.SetOptions(piperhttp.ClientOptions{
+		Username:  username,
+		Password:  password,
+		CookieJar: cookieJar,
+	})
+	conn.Baseurl = aAKaaSEndpoint
+}
+
+// InitBuildFramework : initialize Connector for communication with ABAP SCP instance
+func (conn *Connector) InitBuildFramework(config ConnectorConfiguration, com abaputils.Communication, inputclient piperhttp.Sender) error {
+	conn.Client = inputclient
+	conn.Header = make(map[string][]string)
+	conn.Header["Accept"] = []string{"application/json"}
+	conn.Header["Content-Type"] = []string{"application/json"}
+
+	conn.DownloadClient = &piperhttp.Client{}
+	conn.DownloadClient.SetOptions(piperhttp.ClientOptions{TransportTimeout: 20 * time.Second})
+	// Mapping for options
+	subOptions := abaputils.AbapEnvironmentOptions{}
+	subOptions.CfAPIEndpoint = config.CfAPIEndpoint
+	subOptions.CfServiceInstance = config.CfServiceInstance
+	subOptions.CfServiceKeyName = config.CfServiceKeyName
+	subOptions.CfOrg = config.CfOrg
+	subOptions.CfSpace = config.CfSpace
+	subOptions.Host = config.Host
+	subOptions.Password = config.Password
+	subOptions.Username = config.Username
+
+	// Determine the host, user and password, either via the input parameters or via a cloud foundry service key
+	connectionDetails, err := com.GetAbapCommunicationArrangementInfo(subOptions, "/sap/opu/odata/BUILD/CORE_SRV")
+	if err != nil {
+		return errors.Wrap(err, "Parameters for the ABAP Connection not available")
+	}
+
+	conn.DownloadClient.SetOptions(piperhttp.ClientOptions{
+		Username: connectionDetails.User,
+		Password: connectionDetails.Password,
+	})
+	cookieJar, _ := cookiejar.New(nil)
+	conn.Client.SetOptions(piperhttp.ClientOptions{
+		Username:  connectionDetails.User,
+		Password:  connectionDetails.Password,
+		CookieJar: cookieJar,
+	})
+	conn.Baseurl = connectionDetails.URL
+
+	return nil
 }
 
 // ******** technical communication calls ********
@@ -109,63 +188,6 @@ func (conn Connector) Download(appendum string, downloadPath string) error {
 	url := conn.Baseurl + appendum
 	err := conn.DownloadClient.DownloadFile(url, downloadPath, nil, nil)
 	return err
-}
-
-// InitAAKaaS : initialize Connector for communication with AAKaaS backend
-func (conn *Connector) InitAAKaaS(aAKaaSEndpoint string, username string, password string, inputclient piperhttp.Sender) {
-	conn.Client = inputclient
-	conn.Header = make(map[string][]string)
-	conn.Header["Accept"] = []string{"application/json"}
-	conn.Header["Content-Type"] = []string{"application/json"}
-
-	cookieJar, _ := cookiejar.New(nil)
-	conn.Client.SetOptions(piperhttp.ClientOptions{
-		Username:  username,
-		Password:  password,
-		CookieJar: cookieJar,
-	})
-	conn.Baseurl = aAKaaSEndpoint
-}
-
-// InitBuildFramework : initialize Connector for communication with ABAP SCP instance
-func (conn *Connector) InitBuildFramework(config ConnectorConfiguration, com abaputils.Communication, inputclient piperhttp.Sender) error {
-	conn.Client = inputclient
-	conn.Header = make(map[string][]string)
-	conn.Header["Accept"] = []string{"application/json"}
-	conn.Header["Content-Type"] = []string{"application/json"}
-
-	conn.DownloadClient = &piperhttp.Client{}
-	conn.DownloadClient.SetOptions(piperhttp.ClientOptions{TransportTimeout: 20 * time.Second})
-	// Mapping for options
-	subOptions := abaputils.AbapEnvironmentOptions{}
-	subOptions.CfAPIEndpoint = config.CfAPIEndpoint
-	subOptions.CfServiceInstance = config.CfServiceInstance
-	subOptions.CfServiceKeyName = config.CfServiceKeyName
-	subOptions.CfOrg = config.CfOrg
-	subOptions.CfSpace = config.CfSpace
-	subOptions.Host = config.Host
-	subOptions.Password = config.Password
-	subOptions.Username = config.Username
-
-	// Determine the host, user and password, either via the input parameters or via a cloud foundry service key
-	connectionDetails, err := com.GetAbapCommunicationArrangementInfo(subOptions, "/sap/opu/odata/BUILD/CORE_SRV")
-	if err != nil {
-		return errors.Wrap(err, "Parameters for the ABAP Connection not available")
-	}
-
-	conn.DownloadClient.SetOptions(piperhttp.ClientOptions{
-		Username: connectionDetails.User,
-		Password: connectionDetails.Password,
-	})
-	cookieJar, _ := cookiejar.New(nil)
-	conn.Client.SetOptions(piperhttp.ClientOptions{
-		Username:  connectionDetails.User,
-		Password:  connectionDetails.Password,
-		CookieJar: cookieJar,
-	})
-	conn.Baseurl = connectionDetails.URL
-
-	return nil
 }
 
 // UploadSarFile : upload *.sar file
