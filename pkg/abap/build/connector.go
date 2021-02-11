@@ -37,23 +37,25 @@ type ConnectorConfiguration struct {
 }
 
 // ******** technical communication calls ********
+// According to https://golang.org/pkg/net/http/#Client.Do:
+// >> On error, any Response can be ignored. A non-nil Response with a non-nil error only occurs when CheckRedirect fails, and even then the returned Response.Body is already closed.
+// >> If the returned error is nil, the Response will contain a non-nil Body which the user is expected to close
 
-// GetToken : Get the X-CRSF Token from ABAP Backend for later post
+// GetToken : Get the X-CRSF Token from ABAP Backend (for later post) AND SIDEEFFECT set it directly as header(!) => TODO Rename Method(!)
 func (conn *Connector) GetToken(appendum string) error {
 	url := conn.Baseurl + appendum
 	conn.Header["X-CSRF-Token"] = []string{"Fetch"}
 	response, err := conn.Client.SendRequest("HEAD", url, nil, conn.Header, nil)
 	if err != nil {
-		if response == nil {
-			return errors.Wrap(err, "Fetching X-CSRF-Token failed")
-		}
-		defer response.Body.Close()
-		errorbody, _ := ioutil.ReadAll(response.Body)
-		return errors.Wrapf(err, "Fetching X-CSRF-Token failed: %v", string(errorbody))
-
+		return errors.Wrap(err, "Fetching X-CSRF-Token failed")
 	}
+	defer ioutil.ReadAll(response.Body)
 	defer response.Body.Close()
+
 	token := response.Header.Get("X-CSRF-Token")
+	if token == "" {
+		return errors.New("Retrieving X-CRSF-Token failed")
+	}
 	conn.Header["X-CSRF-Token"] = []string{token}
 	return nil
 }
@@ -63,16 +65,17 @@ func (conn Connector) Get(appendum string) ([]byte, error) {
 	url := conn.Baseurl + appendum
 	response, err := conn.Client.SendRequest("GET", url, nil, conn.Header, nil)
 	if err != nil {
-		if response == nil || response.Body == nil {
-			return nil, errors.Wrap(err, "Get failed")
-		}
-		defer response.Body.Close()
-		errorbody, _ := ioutil.ReadAll(response.Body)
-		return errorbody, errors.Wrapf(err, "Get failed: %v", string(errorbody))
-
+		return nil, errors.Wrap(err, "Get failed")
 	}
+
 	defer response.Body.Close()
 	body, err := ioutil.ReadAll(response.Body)
+
+	statusOK := response.StatusCode >= 200 && response.StatusCode < 300
+	if !statusOK {
+		return body, errors.Wrap(errors.New(string(body)), response.Status)
+	}
+
 	return body, err
 }
 
@@ -87,16 +90,17 @@ func (conn Connector) Post(appendum string, importBody string) ([]byte, error) {
 		response, err = conn.Client.SendRequest("POST", url, bytes.NewBuffer([]byte(importBody)), conn.Header, nil)
 	}
 	if err != nil {
-		if response == nil {
-			return nil, errors.Wrap(err, "Post failed")
-		}
-		defer response.Body.Close()
-		errorbody, _ := ioutil.ReadAll(response.Body)
-		return errorbody, errors.Wrapf(err, "Post failed: %v", string(errorbody))
-
+		return nil, errors.Wrap(err, "Post failed")
 	}
+
 	defer response.Body.Close()
 	body, err := ioutil.ReadAll(response.Body)
+
+	statusOK := response.StatusCode >= 200 && response.StatusCode < 300
+	if !statusOK {
+		return body, errors.Wrap(errors.New(string(body)), response.Status)
+	}
+
 	return body, err
 }
 
@@ -169,11 +173,16 @@ func (conn Connector) UploadSarFile(appendum string, sarFile []byte) error {
 	url := conn.Baseurl + appendum
 	response, err := conn.Client.SendRequest("PUT", url, bytes.NewBuffer(sarFile), conn.Header, nil)
 	if err != nil {
-		defer response.Body.Close()
-		errorbody, _ := ioutil.ReadAll(response.Body)
-		return errors.Wrapf(err, "Upload of SAR file failed: %v", string(errorbody))
+		return errors.Wrap(err, "Upload of SAR file failed!")
 	}
 	defer response.Body.Close()
+	body, err := ioutil.ReadAll(response.Body)
+
+	statusOK := response.StatusCode >= 200 && response.StatusCode < 300
+	if !statusOK {
+		return errors.Wrap(errors.New(string(body)), response.Status)
+	}
+
 	return nil
 }
 
@@ -204,12 +213,18 @@ func (conn Connector) UploadSarFileInChunks(appendum string, fileName string, sa
 
 		response, err := conn.Client.SendRequest("POST", url, nextChunk, header, nil)
 		if err != nil {
-			errorbody, _ := ioutil.ReadAll(response.Body)
-			response.Body.Close()
-			return errors.Wrapf(err, "Upload of SAR file failed: %v", string(errorbody))
+			return errors.Wrap(err, "Upload of SAR file chunk failed!")
 		}
 
+		body, err := ioutil.ReadAll(response.Body)
+		if err != nil {
+			return err
+		}
 		response.Body.Close()
+		statusOK := response.StatusCode >= 200 && response.StatusCode < 300
+		if !statusOK {
+			return errors.Wrap(errors.New(string(body)), response.Status)
+		}
 	}
 	return nil
 }
