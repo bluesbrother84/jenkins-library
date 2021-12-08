@@ -8,6 +8,7 @@ import (
 	"github.com/SAP/jenkins-library/pkg/command"
 	piperhttp "github.com/SAP/jenkins-library/pkg/http"
 	"github.com/SAP/jenkins-library/pkg/log"
+	"github.com/SAP/jenkins-library/pkg/mock"
 )
 
 type AakUtils interface {
@@ -56,4 +57,12 @@ func NewAakBundle() AakUtils {
 	utils.Stdout(log.Writer())
 	utils.Stderr(log.Writer())
 	return &utils
+}
+
+// *************************** TESTUTILS *****************************************
+
+type AakBundleMock struct {
+	*mock.ExecMockRunner
+	*abaputils.ClientMock
+	maxRuntime time.Duration
 }
