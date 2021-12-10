@@ -46,7 +46,8 @@ class DefaultValueCache implements Serializable {
             defaultsFromResources.addAll(customDefaults)
             List defaultsFromFiles = Utils.appendParameterToStringList(
                 [], parameters, 'customDefaultsFromFiles')
-
+            steps.echo "All customDefaults '${customDefaults}'"
+            steps.echo "All customDefaultsFromFiles '${defaultsFromFiles}'"
             Map defaultValues = [:]
             defaultValues = addDefaultsFromLibraryResources(steps, defaultValues, defaultsFromResources)
             defaultValues = addDefaultsFromFiles(steps, defaultValues, defaultsFromFiles)
@@ -61,7 +62,7 @@ class DefaultValueCache implements Serializable {
     private static Map addDefaultsFromLibraryResources(Script steps, Map defaultValues, List resourceFiles) {
         for (String configFileName : resourceFiles) {
             if (resourceFiles.size() > 1) {
-                steps.echo "Loading configuration file '${configFileName}'"
+                steps.echo "Loading configuration file from resource '${configFileName}'"
             }
             Map configuration = steps.readYaml text: steps.libraryResource(configFileName)
             defaultValues = mergeIntoDefaults(defaultValues, configuration)

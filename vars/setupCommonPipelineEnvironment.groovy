@@ -59,8 +59,8 @@ void call(Map parameters = [:]) {
         def script = checkScript(this, parameters)
 
         String configFile = parameters.get('configFile')
-        println"configFile")
-        println(configFile)
+
+        steps.echo "configFile '${configFile}'"
         loadConfigurationFromFile(script, configFile)
 
         // Copy custom defaults from library resources to include them in the 'pipelineConfigAndTests' stash
