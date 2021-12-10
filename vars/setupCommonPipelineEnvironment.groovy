@@ -52,12 +52,15 @@ import groovy.transform.Field
  */
 @GenerateDocumentation
 void call(Map parameters = [:]) {
+    println("inside setupCommonEnvironment")
 
     handlePipelineStepErrors (stepName: STEP_NAME, stepParameters: parameters) {
 
         def script = checkScript(this, parameters)
 
         String configFile = parameters.get('configFile')
+        println"configFile")
+        println(configFile)
         loadConfigurationFromFile(script, configFile)
 
         // Copy custom defaults from library resources to include them in the 'pipelineConfigAndTests' stash
@@ -145,6 +148,7 @@ private static void inferBuildTool(script, config) {
 
 private static loadConfigurationFromFile(script, String configFile) {
     if (!configFile) {
+        println("loading default configFile")
         String defaultYmlConfigFile = '.pipeline/config.yml'
         String defaultYamlConfigFile = '.pipeline/config.yaml'
         if (script.fileExists(defaultYmlConfigFile)) {
@@ -156,8 +160,10 @@ private static loadConfigurationFromFile(script, String configFile) {
 
     // A file passed to the function is not checked for existence in order to fail the pipeline.
     if (configFile) {
+        println("loading other configFile")
         script.commonPipelineEnvironment.configuration = script.readYaml(file: configFile)
         script.commonPipelineEnvironment.configurationFile = configFile
+        println(script.commonPipelineEnvironment.configurationFile)
     }
 }
 
