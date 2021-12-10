@@ -242,7 +242,8 @@ class SetupCommonPipelineEnvironmentTest extends BasePiperTest {
                 if (parameters.file == '.pipeline/config-with-custom-defaults.yml') {
                     return [customDefaults: "${customDefaultUrl}"]
                 }
-                if (parameters.file == '.pipeline/custom_default_from_url_0.yml') {
+               // if (parameters.file == '.pipeline/custom_default_from_url_0.yml') {
+                if (parameters.file == '.pipeline/custom_default_from_url_0_!!!!!!!!!!!!!!!!!!!!!.yml') {
                     return [custom: 'myRemoteConfig']
                 }
             }
