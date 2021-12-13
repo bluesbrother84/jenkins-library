@@ -104,22 +104,26 @@ void call(Map parameters = [:]) {
         boolean runStage
         if (stageConfig.runInAllBranches == false && (config.productiveBranch != env.BRANCH_NAME)) {
             runStage = false
+             echo "runStage 1"
         } else if (ConfigurationLoader.stageConfiguration(script, currentStage)) {
             //activate stage if stage configuration is available
             runStage = true
+            echo "runStage 2"
         } else if (stage.getValue().extensionExists == true) {
             runStage = anyStepConditionTrue || checkExtensionExists(script, config, currentStage)
+            echo "runStage 3"
         } else {
             runStage = anyStepConditionTrue
+            echo "runStage 4"
         }
 
         script.commonPipelineEnvironment.configuration.runStage[currentStage] = runStage
     }
 
-    if (config.verbose) {
+   // if (config.verbose) {
         echo "[${STEP_NAME}] Debug - Run Stage Configuration: ${script.commonPipelineEnvironment.configuration.runStage}"
         echo "[${STEP_NAME}] Debug - Run Step Configuration: ${script.commonPipelineEnvironment.configuration.runStep}"
-    }
+    //}
 }
 
 private static boolean checkExtensionExists(Script script, Map config, String stageName) {
