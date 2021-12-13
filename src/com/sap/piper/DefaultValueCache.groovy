@@ -78,6 +78,7 @@ class DefaultValueCache implements Serializable {
                 steps.echo "defaultValues '${defaultValues}'"
                 steps.echo "configuration '${configuration}'"
                 defaultValues = mergeIntoDefaults(defaultValues, configuration)
+                steps.echo "defaultValues after merge'${defaultValues}'"
             } catch (Exception e) {
                 steps.error "Failed to parse custom defaults as YAML file. " +
                     "Please make sure it is valid YAML, and if loading from a remote location, " +
