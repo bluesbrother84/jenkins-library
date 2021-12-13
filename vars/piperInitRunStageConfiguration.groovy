@@ -64,6 +64,7 @@ void call(Map parameters = [:]) {
     config.stages.each {stage ->
 
         String currentStage = stage.getKey()
+        echo "currentStage ${currentStage} "
         script.commonPipelineEnvironment.configuration.runStep[currentStage] = [:]
 
         // Always test step conditions in order to fill runStep[currentStage] map
@@ -71,29 +72,36 @@ void call(Map parameters = [:]) {
         stage.getValue().stepConditions?.each {step ->
             boolean stepActive = false
             String stepName = step.getKey()
+            echo "stepName ${stepName} "
+            
             step.getValue().each {condition ->
                 Map stepConfig = script.commonPipelineEnvironment.getStepConfiguration(stepName, currentStage)
-                echo "[${stepName}] condition.getKey() ${condition.getKey()}"
+                echo "${stepName} condition.getKey() ${condition.getKey()}"
                 switch(condition.getKey()) {
                     case 'config':
+                        echo "config"
                         stepActive = stepActive || checkConfig(condition, stepConfig)
                         break
                     case 'configKeys':
+                    echo "configKeys"
                         stepActive = stepActive || checkConfigKeys(condition, stepConfig)
                         break
                     case 'filePatternFromConfig':
+                    echo "filePatternFromConfig"
                         stepActive = stepActive || checkForFilesWithPatternFromConfig(script, condition, stepConfig)
                         break
                     case 'filePattern':
+                    echo "filePattern"
                         stepActive = stepActive || checkForFilesWithPattern(script, condition)
                         break
                     case 'npmScripts':
+                    echo "npmScripts"
                         stepActive = stepActive || checkForNpmScriptsInPackages(script, condition)
                         break
                 }
             }
             script.commonPipelineEnvironment.configuration.runStep[currentStage][stepName] = stepActive
-
+            echo "stepActive ${stepActive} "
             anyStepConditionTrue = anyStepConditionTrue || stepActive
         }
 
@@ -116,6 +124,7 @@ void call(Map parameters = [:]) {
         } else {
             runStage = anyStepConditionTrue
             echo "runStage 4"
+            echo "anyStepConditionTrue ${anyStepConditionTrue} "
         }
 
         script.commonPipelineEnvironment.configuration.runStage[currentStage] = runStage
