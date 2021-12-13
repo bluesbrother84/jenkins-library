@@ -73,6 +73,7 @@ void call(Map parameters = [:]) {
             String stepName = step.getKey()
             step.getValue().each {condition ->
                 Map stepConfig = script.commonPipelineEnvironment.getStepConfiguration(stepName, currentStage)
+                echo "[${stepName}] condition.getKey() ${condition.getKey()}"
                 switch(condition.getKey()) {
                     case 'config':
                         stepActive = stepActive || checkConfig(condition, stepConfig)
