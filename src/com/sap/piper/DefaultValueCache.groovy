@@ -92,6 +92,8 @@ class DefaultValueCache implements Serializable {
     }
 
     private static Map mergeIntoDefaults(Map defaultValues, Map configuration) {
+        steps.echo "defaultValues '${defaultValues}'"
+        steps.echo "configuration '${configuration}'"
         return MapUtils.merge(
             MapUtils.pruneNulls(defaultValues),
             MapUtils.pruneNulls(configuration))
