@@ -57,7 +57,8 @@ void call(Map parameters = [:]) {
         .withMandatoryProperty('stageConfigResource')
         .use()
 
-
+    echo "config ${config} "
+    echo "config.stageConfigResource ${config.stageConfigResource} "
     config.stages = (readYaml(text: libraryResource(config.stageConfigResource))).stages
 
     //handling of stage and step activation
