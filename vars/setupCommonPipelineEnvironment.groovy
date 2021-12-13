@@ -106,6 +106,7 @@ void call(Map parameters = [:]) {
             .mixinGeneralConfig(script.commonPipelineEnvironment, GENERAL_CONFIG_KEYS)
             .use()
 
+        steps.echo "config after configurationHelper '${config}'"
         inferBuildTool(script, config)
 
         (parameters.utils ?: new Utils()).pushToSWA([
