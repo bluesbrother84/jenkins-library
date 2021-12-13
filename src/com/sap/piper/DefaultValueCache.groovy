@@ -75,6 +75,8 @@ class DefaultValueCache implements Serializable {
             steps.echo "Loading configuration file '${configFileName}'"
             try {
                 Map configuration = steps.readYaml file: ".pipeline/$configFileName"
+                steps.echo "defaultValues '${defaultValues}'"
+                steps.echo "configuration '${configuration}'"
                 defaultValues = mergeIntoDefaults(defaultValues, configuration)
             } catch (Exception e) {
                 steps.error "Failed to parse custom defaults as YAML file. " +
@@ -92,8 +94,6 @@ class DefaultValueCache implements Serializable {
     }
 
     private static Map mergeIntoDefaults(Map defaultValues, Map configuration) {
-        steps.echo "defaultValues '${defaultValues}'"
-        steps.echo "configuration '${configuration}'"
         return MapUtils.merge(
             MapUtils.pruneNulls(defaultValues),
             MapUtils.pruneNulls(configuration))
