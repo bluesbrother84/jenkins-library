@@ -69,6 +69,7 @@ void call(Map parameters = [:]) {
 
         // Always test step conditions in order to fill runStep[currentStage] map
         boolean anyStepConditionTrue = false
+        echo "stage.getValue() ${stage.getValue()} "
         stage.getValue().stepConditions?.each {step ->
             boolean stepActive = false
             String stepName = step.getKey()
