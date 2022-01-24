@@ -4,6 +4,7 @@ import groovy.transform.Field
 @Field def STEP_NAME = getClass().getName()
 
 void call(Map parameters = [:]) {
+    script.echo("starting step writePipelineEnv")
     final script = checkScript(this, parameters) ?: this
     String piperGoPath = parameters?.piperGoPath ?: './piper'
     Map cpe = script?.commonPipelineEnvironment?.getCPEMap(script)
