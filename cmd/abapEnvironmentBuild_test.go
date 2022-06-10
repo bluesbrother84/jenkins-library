@@ -101,8 +101,8 @@ func TestRunAbapEnvironmentBuild(t *testing.T) {
 		err := runAbapEnvironmentBuild(&config, nil, &utils, &cpe)
 		// assert
 		finalValues := `[{"value_id":"PACKAGES","value":"/BUILD/AUNIT_DUMMY_TESTS"},{"value_id":"BUILD_FRAMEWORK_MODE","value":"P"}]`
-		json.Unmarshal([]byte(finalValues), expectedValueList)
-		json.Unmarshal([]byte(cpe.abap.buildValues), recordedValueList)
+		json.Unmarshal([]byte(finalValues), &expectedValueList)
+		json.Unmarshal([]byte(cpe.abap.buildValues), &recordedValueList)
 		assert.NoError(t, err)
 		assert.ElementsMatch(t, expectedValueList, recordedValueList)
 	})
